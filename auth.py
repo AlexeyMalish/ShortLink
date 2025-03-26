@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 import database
 import models
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv("SECRET_KEY") or "defautl1234"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

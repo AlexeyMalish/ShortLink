@@ -11,6 +11,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/url_shortener
       - REDIS_URL=redis://redis:6379/0
+      - RENDER_EXTERNAL_DB_URL=${RENDER_EXTERNAL_DB_URL:-}
 
   db:
     image: postgres:13
