@@ -7,14 +7,14 @@ from fastapi import FastAPI, Depends, HTTPException, status, Request
 from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordRequestForm
 
-from auth import get_current_user, create_access_token, authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES
-from crud import create_user, get_user_by_email, create_link, get_link_by_short_code, update_link, delete_link, \
+from src.auth import get_current_user, create_access_token, authenticate_user, ACCESS_TOKEN_EXPIRE_MINUTES
+from src.crud import create_user, get_user_by_email, create_link, get_link_by_short_code, update_link, delete_link, \
     get_links_by_user, get_link_by_original_url, get_link_stats, increment_link_click, get_expired_links, \
     delete_expired_links
-from database import SessionLocal, engine
-from models import Base, User
-from redis_cache import redis_cache, cache_invalidate
-from schemas import UserCreate, UserOut, LinkCreate, LinkOut, LinkStatsOut
+from src.database import SessionLocal, engine
+from src.models import Base, User
+from src.redis_cache import redis_cache, cache_invalidate
+from src.schemas import UserCreate, UserOut, LinkCreate, LinkOut, LinkStatsOut
 
 Base.metadata.create_all(bind=engine)
 

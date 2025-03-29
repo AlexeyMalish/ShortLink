@@ -8,8 +8,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
-import database
-import models
+from src import models, database
 
 SECRET_KEY = os.getenv("SECRET_KEY") or "defautl1234"
 ALGORITHM = "HS256"
@@ -28,7 +27,7 @@ def get_password_hash(password: str):
 
 
 def authenticate_user(db: Session, email: str, password: str):
-    user = db.query(models.User).filter(models.User.email == email).first()
+    user = db.query(src.User).filter(models.User.email == email).first()
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
